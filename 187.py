@@ -5,7 +5,7 @@ f:force
 This is a short-form definition; this particular example denotes that the flag -f is equivalent to the flag --force. Lastly you are to accept one further line of input containing the flags and other parameters passed to the program. Remember that programs can accept parameters that are not flags. These don't start with a hyphen and there may be several of them. For example,
 -Q -rf --no-preserve-root directory1/ directory2/
 In which the flags given are -Q -rf (same as -r -f) and --no-preserve-root, and the parameters are directory1/ and directory2/. Remember the Q, r and f flags are defined in the short-form definition format above.
-Output Description
+Output Description 
 You are to output a list of the full names of all of the flags entered (eg. force rather than f), as well as all of the parameters entered. Alternatively, if a short-form flag is entered that doesn't have a difinition, print an error.
 '''
 
