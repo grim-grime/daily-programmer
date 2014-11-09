@@ -3,7 +3,7 @@
 
 git add $1
 git add submit.sh
-git commit -m "Changed with: $1"
+git commit -m "To: You From: Me"
 git push
 sed 's/^/    /' "$1" > temp
 subl temp
