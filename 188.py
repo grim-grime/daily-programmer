@@ -1,3 +1,28 @@
+'''
+iso 8601 standard for dates tells us the proper way to do an extended day is yyyy-mm-dd
+yyyy = year
+mm = month
+dd = day
+A company's database has become polluted with mixed date formats. They could be one of 6 different formats
+yyyy-mm-dd
+mm/dd/yy
+mm#yy#dd
+dd*mm*yyyy
+(month word) dd, yy
+(month word) dd, yyyy
+(month word) can be: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+Note if is yyyy it is a full 4 digit year. If it is yy then it is only the last 2 digits of the year. Years only go between 1950-2049.
+
+Input:
+You will be given 1000 dates to correct.
+
+Output:
+You must output the dates to the proper iso 8601 standard of yyyy-mm-dd
+
+Challenge Input:
+https://gist.github.com/coderd00d/a88d4d2da014203898af
+'''
+
 import re
 
 words = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -30,28 +55,6 @@ def parser(date):
 		match = re.match(r,date)
 		if match:
 			return '{0}-{1}-{2}'.format(year(match.group(y)),month(match.group(m)),match.group(d))
-
-	'''match = re.match('(\d\d\d\d)-(\d\d)-(\d\d)',date)
-	if match:
-		return match.group(1) + '-' + match.group(2) + '-' + match.group(3)
-
-	match = re.match('(\d\d)/(\d\d)/(\d\d)',date)
-	if match:
-		return year(match.group(3)) + '-' + match.group(1) + '-' + match.group(2)
-
-	match = re.match('(\d\d)#(\d\d)#(\d\d)',date)
-	if match:
-		return year(match.group(2)) + '-' + match.group(1) + '-' + match.group(3)
-
-	match = re.match('(\d\d)\*(\d\d)\*(\d\d\d\d)',date)
-	if match:
-		return match.group(3) + '-' + match.group(2) + '-' + match.group(1)
-
-	match = re.match('(\w\w\w) (\d\d), (\d\d+)',date)
-	if match:
-		return year(match.group(3)) + '-' + word_dict[match.group(1)] + '-' + match.group(2)
-
-	match = re.match('(')'''
 	return 'NO MATCH for ' + date
 
 
