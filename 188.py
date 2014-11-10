@@ -27,9 +27,8 @@ import re
 from requests import get
 
 words = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-word_dict = dict( [(word,str(x+1)) for (x, word) in enumerate(words)])
-body = get('https://gist.github.com/coderd00d/a88d4d2da014203898af').text
-dates = re.findall('">([\w\d][\w\d\s,]+[\w\d])</div>',body)
+word_dict = dict( [(word,str(x+1).zfill(2)) for (x, word) in enumerate(words)])
+
 
 def year(x):
 	if int(x) >= 50 and int(x) <= 99:
@@ -61,5 +60,6 @@ def parser(date):
 			return '{0}-{1}-{2}'.format(year(match.group(y)),month(match.group(m)),match.group(d))
 	return 'NO MATCH for ' + date
 
-for date in dates:
-	print(parser(date.rstrip()))
+with open('188-dates.txt') as f:
+	for date in f:
+		print(parser(date.rstrip()))
