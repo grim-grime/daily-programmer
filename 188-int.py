@@ -1,13 +1,23 @@
 '''
-This program makes a box and whisker plot and prints it with ASCII art.
+This program makes a box & whisker plot that looks like this:
+                    _____________________________________________
+1                   |                    |                       |                 80 191
+x 12 21 28 28 29 30 32 34 35 35 36 38 39 40 40 42 44 45 46 47 49 50 53 55 56 59 63 X  X  
+                    |____________________|_______________________|
 '''
+
 
 import math
 
+numbers = [1,12,21,28,28,29,30,32,34,35,35,36,38,39,40,40,42,44,45,46,47,49,50,53,55,56,59,63,80,191];
+
+'''
+#comment out to use defaults
 with open('188-int-data.txt','r') as f:
 	numbers = []
 	for line in f:
 		numbers += [int(x) for x in line.split()]
+'''
 
 #get basic info
 numbers = sorted(numbers)
