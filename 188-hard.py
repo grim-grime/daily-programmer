@@ -26,18 +26,21 @@ class Board(object):
 		self.board = board
 	def __str__(self):
 		return '\n'.join(self.board)
+
 	#get tile type
 	def pos(self,coord):
 		x,y = coord
 		return self.board[y][x]
+
 	#get next tile position
 	def move(self,coord):
 		x,y = coord
 		#pseudo-switch statement based off tile type
-		return  {'^': lambda x, y: (x,self.h-1) if y <= 0 else (x,y-1),
-		'>': lambda x, y: (0,y) if x >= (self.w - 1) else (x+1,y),
-		'<': lambda x, y: (self.w-1,y) if x <= 0 else (x-1,y),
-		'v': lambda x, y: (x, 0) if y >= (self.h - 1)  else (x,y+1)}[self.pos((x,y))](x,y)
+		return  {'^': lambda x, y: (x,(y-1) % self.h),
+		'>': lambda x, y: ((x+1)%self.w,y),
+		'<': lambda x, y: ((x-1)%self.w,y),
+		'v': lambda x, y: (x,(y+1)%self.h)}[self.pos((x,y))](x,y)
+
 	#follow trail until a cycle is found - return nothing if repeated point is not original point
 	def trail(self,coord):
 		visited = set()
@@ -49,6 +52,7 @@ class Board(object):
 			return (len(visited),visited)
 		else:
 			return (0,set())
+
 	def print_only(self,coords):
 		for y in range(self.h):
 			line = ''
