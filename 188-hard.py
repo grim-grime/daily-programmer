@@ -36,10 +36,10 @@ class Board(object):
 	def move(self,coord):
 		x,y = coord
 		#pseudo-switch statement based off tile type
-		return  {'^': lambda x, y: (x,(y-1) % self.h),
-		'>': lambda x, y: ((x+1)%self.w,y),
-		'<': lambda x, y: ((x-1)%self.w,y),
-		'v': lambda x, y: (x,(y+1)%self.h)}[self.pos((x,y))](x,y)
+		return  {'^': (x,(y-1) % self.h),
+		'>': ((x+1)%self.w,y),
+		'<': ((x-1)%self.w,y),
+		'v': (x,(y+1)%self.h)}[self.pos((x,y))]
 
 	#follow trail until a cycle is found - return nothing if repeated point is not original point
 	def trail(self,coord):
